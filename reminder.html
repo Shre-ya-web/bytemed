@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Health Reminders</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Header */
+        header {
+            background-color: #1a5276;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .site-title {
+            font-size: 24px;
+            margin: 0;
+        }
+        
+        /* Main Content */
+        .content-area {
+            padding: 30px 0;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .card-header {
+            background-color: #1a5276;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-header h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        /* Medication Reminders */
+        .medication-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .medication-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .medication-item:last-child {
+            border-bottom: none;
+        }
+        
+        .medication-details h3 {
+            margin: 0 0 5px;
+            font-size: 16px;
+        }
+        
+        .medication-details p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .medication-status {
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-due {
+            background-color: #e74c3c;
+        }
+        
+        .status-upcoming {
+            background-color: #f39c12;
+        }
+        
+        .status-taken {
+            background-color: #2ecc71;
+        }
+        
+        /* Appointment Calendar */
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .calendar th {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .calendar td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #eee;
+            height: 40px;
+            vertical-align: top;
+        }
+        
+        .calendar .today {
+            background-color: #e8f4fe;
+            font-weight: bold;
+        }
+        
+        .calendar .has-event {
+            position: relative;
+        }
+        
+        .calendar .event-indicator {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #1a5276;
+        }
+        
+        /* Lab Reports */
+        .lab-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .lab-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .lab-item:last-child {
+            border-bottom: none;
+        }
+        
+        .lab-item h3 {
+            margin: 0 0 5px;
+            font-size: 16px;
+        }
+        
+        .lab-item p {
+            margin: 0 0 8px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .status-pill {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .status-pending {
+            background-color: #fef5e7;
+            color: #e67e22;
+        }
+        
+        .status-completed {
+            background-color: #e8f8f5;
+            color: #27ae60;
+        }
+        
+        .status-overdue {
+            background-color: #fcf3f2;
+            color: #e74c3c;
+        }
+        
+        /* Forms */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #1a5276;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background-color: #154360;
+        }
+        
+        /* Medical Profile */
+        .profile-section {
+            margin-bottom: 20px;
+        }
+        
+        .profile-section h3 {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .profile-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .data-item {
+            margin-bottom: 10px;
+        }
+        
+        .data-label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 3px;
+            color: #666;
+            font-size: 13px;
+        }
+        
+        .data-value {
+            font-size: 15px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .user-menu {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">Patient Health Reminders</h1>
+                <div class="user-menu">
+                    <span>Welcome, John Doe</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="content-area">
+            <div class="dashboard">
+                <!-- Medication Reminders -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Medication Reminders</h2>
+                        <a href="#" class="btn">Add New</a>
+                    </div>
+                    <div class="card-body">
+                        <ul class="medication-list">
+                            <li class="medication-item">
+                                <div class="medication-details">
+                                    <h3>Lisinopril 10mg</h3>
+                                    <p>Take 1 tablet every morning</p>
+                                    <p>Next dose: Today, 8:00 AM</p>
+                                </div>
+                                <div class="medication-status">
+                                    <span class="status-indicator status-due"></span>
+                                    <span>Due Now</span>
+                                </div>
+                            </li>
+                            <li class="medication-item">
+                                <div class="medication-details">
+                                    <h3>Metformin 500mg</h3>
+                                    <p>Take 1 tablet twice daily with meals</p>
+                                    <p>Next dose: Today, 7:00 PM</p>
+                                </div>
+                                <div class="medication-status">
+                                    <span class="status-indicator status-upcoming"></span>
+                                    <span>Upcoming</span>
+                                </div>
+                            </li>
+                            <li class="medication-item">
+                                <div class="medication-details">
+                                    <h3>Atorvastatin 20mg</h3>
+                                    <p>Take 1 tablet at bedtime</p>
+                                    <p>Next dose: Today, 10:00 PM</p>
+                                </div>
+                                <div class="medication-status">
+                                    <span class="status-indicator status-upcoming"></span>
+                                    <span>Upcoming</span>
+                                </div>
+                            </li>
+                            <li class="medication-item">
+                                <div class="medication-details">
+                                    <h3>Vitamin D 1000 IU</h3>
+                                    <p>Take 1 tablet daily</p>
+                                    <p>Next dose: Today, 8:00 AM</p>
+                                </div>
+                                <div class="medication-status">
+                                    <span class="status-indicator status-taken"></span>
+                                    <span>Taken</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Appointments -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Upcoming Appointments</h2>
+                        <a href="#" class="btn">Schedule</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="appointment-list">
+                            <div class="medication-item">
+                                <div class="medication-details">
+                                    <h3>Dr. Sarah Johnson</h3>
+                                    <p>Primary Care Physician</p>
+                                    <p>April 15, 2025 at 10:00 AM</p>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn">Reschedule</a>
+                                </div>
+                            </div>
+                            <div class="medication-item">
+                                <div class="medication-details">
+                                    <h3>Dr. Michael Chen</h3>
+                                    <p>Cardiologist</p>
+                                    <p>May 3, 2025 at 2:30 PM</p>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn">Reschedule</a>
+                                </div>
+                            </div>
+                            <div class="medication-item">
+                                <div class="medication-details">
+                                    <h3>Vision Screening</h3>
+                                    <p>Annual Check</p>
+                                    <p>May 20, 2025 at 1:15 PM</p>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn">Reschedule</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lab Reports -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Lab Reports & Tests</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+                    <div class="card-body">
+                        <ul class="lab-list">
+                            <li class="lab-item">
+                                <h3>Blood Glucose Test</h3>
+                                <p>Scheduled for: April 2, 2025</p>
+                                <span class="status-pill status-pending">Upcoming</span>
+                            </li>
+                            <li class="lab-item">
+                                <h3>Lipid Panel</h3>
+                                <p>Scheduled for: April 2, 2025</p>
+                                <span class="status-pill status-pending">Upcoming</span>
+                            </li>
+                            <li class="lab-item">
+                                <h3>Complete Blood Count</h3>
+                                <p>Completed on: February 15, 2025</p>
+                                <span class="status-pill status-completed">Completed</span>
+                                <p><a href="#">View Results</a></p>
+                            </li>
+                            <li class="lab-item">
+                                <h3>Urine Analysis</h3>
+                                <p>Due by: March 15, 2025</p>
+                                <span class="status-pill status-overdue">Overdue</span>
+                                <p><a href="#">Schedule Now</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Calendar View -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Health Calendar - April 2025</h2>
+                </div>
+                <div class="card-body">
+                    <table class="calendar">
+                        <thead>
+                            <tr>
+                                <th>Sun</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td>1</td>
+                                <td class="has-event">2<div class="event-indicator"></div></td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
+                                <td>13</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td class="has-event">15<div class="event-indicator"></div></td>
+                                <td>16</td>
+                                <td>17</td>
+                                <td>18</td>
+                                <td>19</td>
+                                <td>20</td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>22</td>
+                                <td>23</td>
+                                <td>24</td>
+                                <td>25</td>
+                                <td>26</td>
+                                <td>27</td>
+                            </tr>
+                            <tr>
+                                <td>28</td>
+                                <td>29</td>
+                                <td class="today">30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Health Metrics -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Add Health Reading</h2>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="reading-type">Reading Type</label>
+                            <select id="reading-type" class="form-control">
+                                <option>Blood Pressure</option>
+                                <option>Blood Glucose</option>
+                                <option>Weight</option>
+                                <option>Temperature</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reading-value">Value</label>
+                            <input type="text" id="reading-value" class="form-control" placeholder="e.g. 120/80">
+                        </div>
+                        <div class="form-group">
+                            <label for="reading-date">Date & Time</label>
+                            <input type="datetime-local" id="reading-date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="reading-notes">Notes</label>
+                            <textarea id="reading-notes" class="form-control" rows="3" placeholder="Any additional information"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Save Reading</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Medical Profile -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Medical Profile</h2>
+                    <a href="#" class="btn">Edit</a>
+                </div>
+                <div class="card-body">
+                    <div class="profile-section">
+                        <h3>Personal Information</h3>
+                        <div class="profile-data">
+                            <div class="data-item">
+                                <span class="data-label">Name</span>
+                                <span class="data-value">John Doe</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">Date of Birth</span>
+                                <span class="data-value">January 15, 1970</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">Blood Type</span>
+                                <span class="data-value">O Positive</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">Height</span>
+                                <span class="data-value">5'10" (178 cm)</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">Weight</span>
+                                <span class="data-value">180 lbs (81.6 kg)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>Medical Conditions</h3>
+                        <div class="profile-data">
+                            <div class="data-item">
+                                <span class="data-label">Hypertension</span>
+                                <span class="data-value">Diagnosed 2018</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">Type 2 Diabetes</span>
+                                <span class="data-value">Diagnosed 2020</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>Allergies</h3>
+                        <div class="profile-data">
+                            <div class="data-item">
+                                <span class="data-label">Penicillin</span>
+                                <span class="data-value">Severe reaction</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">Peanuts</span>
+                                <span class="data-value">Mild sensitivity</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>Emergency Contacts</h3>
+                        <div class="profile-data">
+                            <div class="data-item">
+                                <span class="data-label">Primary Contact</span>
+                                <span class="data-value">Mary Doe (Wife)</span>
+                                <span class="data-value">555-123-4567</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">Secondary Contact</span>
+                                <span class="data-value">James Doe (Son)</span>
+                                <span class="data-value">555-987-6543</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
