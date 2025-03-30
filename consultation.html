@@ -4,38 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Consultations | HealthCare Plus</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="consultation.css">
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-               
                 <h1>ByteMed</h1>
             </div>
             <nav>
                 <ul>
                     
-                    <li><a href="#" class="active">Consultations</a></li>
-             
-                   
+                    <li><a href="consultations.html" class="active">Consultations</a></li>
+                    
                 </ul>
             </nav>
-            <a href="#" class="btn btn-primary">Book Now</a>
+            
         </div>
     </header>
 
-    <main class="consultation-page">
+    <main>
         <section class="consultation-hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Doctor Consultations</h1>
-                    <p>Connect with certified doctors online or in-person for all your healthcare needs.</p>
-                    <div class="search-doctors">
-                        <input type="text" placeholder="Search doctors by specialty...">
-                        <button><i class="fas fa-search"></i></button>
-                    </div>
+                    <h1>Expert Medical Consultations</h1>
+                    <p>Connect with board-certified doctors from the comfort of your home</p>
+                    <a href="#book-now" class="btn btn-primary">Book an Appointment</a>
                 </div>
                 <div class="hero-image">
                     <img src="images/consultation-hero.jpg" alt="Doctor consultation">
@@ -43,227 +38,201 @@
             </div>
         </section>
 
-        <section class="consultation-options">
+        <section class="consultation-types">
             <div class="container">
-                <h2>Choose Your Consultation Type</h2>
+                <h2>Our Consultation Options</h2>
                 <div class="options-grid">
-                    <div class="option-card video-consult">
-                        <div class="icon">
+                    <div class="option-card">
+                        <div class="option-icon">
                             <i class="fas fa-video"></i>
                         </div>
                         <h3>Video Consultation</h3>
-                        <p>Face-to-face consultation via secure video call</p>
-                        <ul class="benefits">
-                            <li><i class="fas fa-check"></i> Instant connection</li>
-                            <li><i class="fas fa-check"></i> No travel needed</li>
-                            <li><i class="fas fa-check"></i> Private and secure</li>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Face-to-face with doctors</li>
+                            <li><i class="fas fa-check"></i> Secure and private</li>
+                            <li><i class="fas fa-check"></i> Prescriptions sent digitally</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Book Video Consult</a>
+                        <a href="#" class="btn btn-outline">Learn More</a>
                     </div>
 
-                    <div class="option-card in-person">
-                        <div class="icon">
-                            <i class="fas fa-hospital-user"></i>
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-phone-alt"></i>
                         </div>
-                        <h3>In-Person Visit</h3>
-                        <p>Traditional clinic or hospital appointment</p>
-                        <ul class="benefits">
-                            <li><i class="fas fa-check"></i> Physical examination</li>
-                            <li><i class="fas fa-check"></i> Diagnostic tests available</li>
-                            <li><i class="fas fa-check"></i> Specialist equipment</li>
+                        <h3>Phone Consultation</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Speak directly with a doctor</li>
+                            <li><i class="fas fa-check"></i> No internet required</li>
+                            <li><i class="fas fa-check"></i> Quick medical advice</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Book In-Person</a>
+                        <a href="#" class="btn btn-outline">Learn More</a>
                     </div>
 
-                    <div class="option-card chat-consult">
-                        <div class="icon">
+                    <div class="option-card">
+                        <div class="option-icon">
                             <i class="fas fa-comment-medical"></i>
                         </div>
                         <h3>Chat Consultation</h3>
-                        <p>Text-based consultation with doctors</p>
-                        <ul class="benefits">
-                            <li><i class="fas fa-check"></i> Quick medical advice</li>
-                            <li><i class="fas fa-check"></i> Asynchronous communication</li>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Text with doctors 24/7</li>
                             <li><i class="fas fa-check"></i> Good for follow-ups</li>
+                            <li><i class="fas fa-check"></i> Attach photos if needed</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Start Chat</a>
+                        <a href="#" class="btn btn-outline">Learn More</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="specialty-filters">
+        <section class="specialties-section">
             <div class="container">
-                <h2>Consult by Specialty</h2>
-                <div class="specialty-buttons">
-                    <button class="active">All Specialties</button>
-                    <button>General Medicine</button>
-                    <button>Pediatrics</button>
-                    <button>Cardiology</button>
-                    <button>Dermatology</button>
-                    <button>Neurology</button>
-                    <button>Orthopedics</button>
-                    <button>Psychiatry</button>
+                <h2>Consult With Specialists</h2>
+                <div class="specialties-grid">
+                    <div class="specialty-card">
+                        <img src="images/cardiology.jpg" alt="Cardiology">
+                        <h3>Cardiology</h3>
+                        <p>Heart health and cardiovascular care</p>
+                        <a href="#" class="btn btn-primary">Find Cardiologist</a>
+                    </div>
+                    <div class="specialty-card">
+                        <img src="images/pediatrics.jpg" alt="Pediatrics">
+                        <h3>Pediatrics</h3>
+                        <p>Child healthcare specialists</p>
+                        <a href="#" class="btn btn-primary">Find Pediatrician</a>
+                    </div>
+                    <div class="specialty-card">
+                        <img src="images/dermatology.jpg" alt="Dermatology">
+                        <h3>Dermatology</h3>
+                        <p>Skin, hair and nail conditions</p>
+                        <a href="#" class="btn btn-primary">Find Dermatologist</a>
+                    </div>
+                    <div class="specialty-card">
+                        <img src="images/mental-health.jpg" alt="Mental Health">
+                        <h3>Mental Health</h3>
+                        <p>Psychiatry and counseling</p>
+                        <a href="#" class="btn btn-primary">Find Specialist</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="available-doctors">
+        <section id="book-now" class="booking-section">
             <div class="container">
-                <div class="section-header">
-                    <h2>Available Doctors</h2>
-                    <div class="sort-options">
-                        <span>Sort by:</span>
-                        <select>
-                            <option>Availability</option>
-                            <option>Rating</option>
-                            <option>Experience</option>
-                            <option>Price</option>
-                        </select>
+                <div class="booking-container">
+                    <div class="booking-form">
+                        <h2>Book Your Consultation</h2>
+                        <form>
+                            <div class="form-group">
+                                <label for="consultation-type">Consultation Type</label>
+                                <select id="consultation-type" required>
+                                    <option value="">Select type</option>
+                                    <option value="video">Video Consultation</option>
+                                    <option value="phone">Phone Consultation</option>
+                                    <option value="chat">Chat Consultation</option>
+                                    <option value="in-person">In-Person Visit</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="specialty">Specialty</label>
+                                <select id="specialty" required>
+                                    <option value="">Select specialty</option>
+                                    <option value="cardiology">Cardiology</option>
+                                    <option value="pediatrics">Pediatrics</option>
+                                    <option value="dermatology">Dermatology</option>
+                                    <option value="mental-health">Mental Health</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="date">Preferred Date</label>
+                                <input type="date" id="date" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="time">Preferred Time</label>
+                                <input type="time" id="time" required>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Find Available Doctors</button>
+                        </form>
                     </div>
-                </div>
-
-                <div class="doctors-list">
-                    <!-- Doctor Card 1 -->
-                    <div class="doctor-card">
-                        <div class="doctor-profile">
-                            <img src="images/doctor1.jpg" alt="Dr. Sarah Johnson">
-                            <div class="badge online">Online Now</div>
-                        </div>
-                        <div class="doctor-info">
-                            <h3>Dr. Sarah Johnson</h3>
-                            <p class="specialty">Cardiologist</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span>4.7 (128 reviews)</span>
-                            </div>
-                            <p class="experience">12 years experience</p>
-                            <div class="consultation-types">
-                                <span class="type-tag video">Video</span>
-                                <span class="type-tag in-person">Clinic</span>
-                            </div>
-                        </div>
-                        <div class="doctor-actions">
-                            <p class="price">$120 <span>/ consultation</span></p>
-                            <a href="#" class="btn btn-primary">Book Now</a>
-                            <a href="#" class="view-profile">View Profile</a>
-                        </div>
+                    <div class="booking-info">
+                        <h3>Why Choose Us?</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Board-certified doctors</li>
+                            <li><i class="fas fa-check-circle"></i> Average wait time <15 mins</li>
+                            <li><i class="fas fa-check-circle"></i> HIPAA compliant platform</li>
+                            <li><i class="fas fa-check-circle"></i> Prescriptions delivered digitally</li>
+                            <li><i class="fas fa-check-circle"></i> Affordable pricing options</li>
+                        </ul>
                     </div>
-
-                    <!-- Doctor Card 2 -->
-                    <div class="doctor-card">
-                        <div class="doctor-profile">
-                            <img src="images/doctor2.jpg" alt="Dr. Michael Chen">
-                            <div class="badge offline">Offline</div>
-                        </div>
-                        <div class="doctor-info">
-                            <h3>Dr. Michael Chen</h3>
-                            <p class="specialty">Neurologist</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>5.0 (96 reviews)</span>
-                            </div>
-                            <p class="experience">15 years experience</p>
-                            <div class="consultation-types">
-                                <span class="type-tag video">Video</span>
-                                <span class="type-tag chat">Chat</span>
-                            </div>
-                        </div>
-                        <div class="doctor-actions">
-                            <p class="price">$150 <span>/ consultation</span></p>
-                            <a href="#" class="btn btn-outline">Schedule</a>
-                            <a href="#" class="view-profile">View Profile</a>
-                        </div>
-                    </div>
-
-                    <!-- Doctor Card 3 -->
-                    <div class="doctor-card">
-                        <div class="doctor-profile">
-                            <img src="images/doctor3.jpg" alt="Dr. Priya Patel">
-                            <div class="badge online">Online Now</div>
-                        </div>
-                        <div class="doctor-info">
-                            <h3>Dr. Priya Patel</h3>
-                            <p class="specialty">Pediatrician</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>4.3 (215 reviews)</span>
-                            </div>
-                            <p class="experience">8 years experience</p>
-                            <div class="consultation-types">
-                                <span class="type-tag video">Video</span>
-                                <span class="type-tag in-person">Clinic</span>
-                                <span class="type-tag chat">Chat</span>
-                            </div>
-                        </div>
-                        <div class="doctor-actions">
-                            <p class="price">$95 <span>/ consultation</span></p>
-                            <a href="#" class="btn btn-primary">Book Now</a>
-                            <a href="#" class="view-profile">View Profile</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="view-all">
-                    <a href="#" class="btn btn-outline">View All Doctors</a>
                 </div>
             </div>
         </section>
 
-        <section class="how-it-works">
+        <section class="testimonials">
             <div class="container">
-                <h2>How Online Consultations Work</h2>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Choose Your Doctor</h3>
-                            <p>Browse our network of qualified doctors and select the right specialist for your needs.</p>
+                <h2>What Our Patients Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The video consultation was so convenient and the doctor was very thorough. I didn't have to leave my home to get expert medical advice."</p>
+                        <div class="patient">
+                            <img src="images/patient1.jpg" alt="Sarah J.">
+                            <div>
+                                <h4>Sarah J.</h4>
+                                <p>Cardiology Patient</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Book an Appointment</h3>
-                            <p>Select your preferred consultation type and choose a convenient time slot.</p>
+                    
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Connect with Your Doctor</h3>
-                            <p>At your appointment time, connect via video, chat, or visit the clinic.</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h3>Receive Aftercare</h3>
-                            <p>Get prescriptions, medical advice, and follow-up instructions.</p>
+                        <p>"As a busy parent, being able to consult with a pediatrician without dragging my sick child to the clinic was a lifesaver!"</p>
+                        <div class="patient">
+                            <img src="images/patient2.jpg" alt="Michael T.">
+                            <div>
+                                <h4>Michael T.</h4>
+                                <p>Parent of Patient</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Consult With a Doctor?</h2>
+                <p>Join thousands of patients who have experienced convenient, quality healthcare</p>
+                <a href="appoinment.html" class="btn btn-primary">Book a Consultation Now</a>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            
+            <div class="footer-content">
+                
+                
+                       
+                
+            </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 ByteMed. All rights reserved.</p>
+                <p>&copy; 2025 . All rights reserved.</p>
             </div>
         </div>
     </footer>
