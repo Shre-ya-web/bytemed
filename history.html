@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nespola Account</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        /* Account Page Styles */
+        .account-container {
+            display: flex;
+            margin-top: 30px;
+            gap: 30px;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .sidebar-links {
+            list-style: none;
+        }
+        
+        .sidebar-links li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .sidebar-links a:hover {
+            color: #3498db;
+        }
+        
+        .main-content {
+            flex: 1;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .account-header {
+            margin-bottom: 30px;
+        }
+        
+        .account-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .account-subtitle {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        
+        .user-details h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .user-details p {
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .info-section {
+            margin-bottom: 30px;
+        }
+        
+        .info-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .info-label {
+            width: 150px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .info-value {
+            flex: 1;
+        }
+        
+        /* Medical History Styles */
+        .medical-history {
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 30px;
+        }
+        
+        .history-item {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .history-date {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .history-type {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .history-details {
+            margin-bottom: 10px;
+        }
+        
+        .history-diagnosis {
+            font-weight: 500;
+            color: #d32f2f;
+            margin-bottom: 5px;
+        }
+        
+        .history-treatment {
+            color: #388e3c;
+            margin-bottom: 5px;
+        }
+        
+        .history-notes {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .add-history-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .add-history-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+            border: none;
+        }
+        
+        .btn-secondary {
+            background-color: #f5f5f5;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .account-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .info-item {
+                flex-direction: column;
+            }
+            
+            .info-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .history-header {
+                flex-direction: column;
+            }
+            
+            .history-type {
+                margin-top: 5px;
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Nespola</a>
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Products</a>
+                <a href="#">Support</a>
+                <a href="#">Logout</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="account-container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Personal information</h3>
+                    <ul class="sidebar-links">
+                        <li><a href="#">Manage your personal information</a></li>
+                        <li><a href="#">Phone numbers</a></li>
+                        <li><a href="#">Email addresses</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Account</h3>
+                    <ul class="sidebar-links">
+                        <li><a href="#">Billing & Payments</a></li>
+                        <li><a href="#">Order History</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Medical</h3>
+                    <ul class="sidebar-links">
+                        <li><a href="#medical-history">Medical History</a></li>
+                        <li><a href="#">Prescriptions</a></li>
+                        <li><a href="#">Allergies</a></li>
+                        <li><a href="#">Immunizations</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Main Content Area -->
+            <div class="main-content">
+                <div class="account-header">
+                    <h1 class="account-title">Nespola Account</h1>
+                    <p class="account-subtitle">Manage your personal information and medical history</p>
+                </div>
+                
+                <div class="user-info">
+                    <div class="user-avatar">IT</div>
+                    <div class="user-details">
+                        <h3>Irakli talavadze</h3>
+                        <p>ikakodesign@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2 class="info-title">Personal information</h2>
+                    
+                    <div class="info-item">
+                        <div class="info-label">Name</div>
+                        <div class="info-value">irakli talavadze</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">Date of Birth</div>
+                        <div class="info-value">07 July 1993</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">Country Region</div>
+                        <div class="info-value">Georgia, Tbilisi</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">Language</div>
+                        <div class="info-value">English (UK) - English</div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2 class="info-title">Contactable at</h2>
+                    <div class="info-item">
+                        <div class="info-label">Email</div>
+                        <div class="info-value">ikakodesign@gmail.com</div>
+                    </div>
+                </div>
+                
+                <!-- Medical History Section -->
+                <div class="medical-history" id="medical-history">
+                    <h2 class="info-title">Medical History</h2>
+                    
+                    <div class="history-item">
+                        <div class="history-header">
+                            <span class="history-date">15 March 2023</span>
+                            <span class="history-type">Consultation</span>
+                        </div>
+                        <div class="history-details">
+                            <div class="history-diagnosis">Diagnosis: Seasonal Allergies</div>
+                            <div class="history-treatment">Treatment: Antihistamines</div>
+                            <div class="history-notes">
+                                Patient reported sneezing, itchy eyes, and runny nose. Symptoms began 2 weeks ago. 
+                                Recommended daily antihistamine and nasal spray. Follow up in 4 weeks if symptoms persist.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-header">
+                            <span class="history-date">22 January 2023</span>
+                            <span class="history-type">Annual Checkup</span>
+                        </div>
+                        <div class="history-details">
+                            <div class="history-diagnosis">Diagnosis: Healthy</div>
+                            <div class="history-treatment">Treatment: None</div>
+                            <div class="history-notes">
+                                Routine annual physical examination. Blood pressure 120/80, pulse 72. 
+                                Blood work results within normal ranges. Recommended maintaining current diet and exercise routine.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-header">
+                            <span class="history-date">5 November 2022</span>
+                            <span class="history-type">Emergency</span>
+                        </div>
+                        <div class="history-details">
+                            <div class="history-diagnosis">Diagnosis: Sprained Ankle</div>
+                            <div class="history-treatment">Treatment: RICE method, pain medication</div>
+                            <div class="history-notes">
+                                Patient reported twisting ankle while playing basketball. Moderate swelling observed. 
+                                X-ray showed no fracture. Recommended rest, ice, compression, and elevation. 
+                                Prescribed ibuprofen for pain management.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="add-history-btn" id="addHistoryBtn">+ Add Medical Record</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Medical History Modal -->
+    <div class="modal" id="medicalHistoryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add Medical Record</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <form id="medicalHistoryForm">
+                <div class="form-group">
+                    <label for="visitDate">Visit Date</label>
+                    <input type="date" id="visitDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="visitType">Visit Type</label>
+                    <select id="visitType" required>
+                        <option value="">Select visit type</option>
+                        <option value="Consultation">Consultation</option>
+                        <option value="Checkup">Checkup</option>
+                        <option value="Emergency">Emergency</option>
+                        <option value="Surgery">Surgery</option>
+                        <option value="Follow-up">Follow-up</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="diagnosis">Diagnosis</label>
+                    <input type="text" id="diagnosis" placeholder="Enter diagnosis" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="treatment">Treatment</label>
+                    <input type="text" id="treatment" placeholder="Enter treatment">
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" placeholder="Enter additional notes"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Record</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Connect to Backend -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal functionality
+            const modal = document.getElementById('medicalHistoryModal');
+            const addBtn = document.getElementById('addHistoryBtn');
+            const closeBtn = document.getElementById('closeModal');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const form = document.getElementById('medicalHistoryForm');
+            
+            // Show modal
+            addBtn.addEventListener('click', function() {
+                modal.style.display = 'flex';
+            });
+            
+            // Hide modal
+            function closeModal() {
+                modal.style.display = 'none';
+                form.reset();
+            }
+            
+            closeBtn.addEventListener('click', closeModal);
+            cancelBtn.addEventListener('click', closeModal);
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const visitDate = document.getElementById('visitDate').value;
+                const visitType = document.getElementById('visitType').value;
+                const diagnosis = document.getElementById('diagnosis').value;
+                const treatment = document.getElementById('treatment').value;
+                const notes = document.getElementById('notes').value;
+                
+                // Format date for display
+                const formattedDate = new Date(visitDate).toLocaleDateString('en-US', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+                
+                // Create new history item
+                const historySection = document.querySelector('.medical-history');
+                const newHistoryItem = document.createElement('div');
+                newHistoryItem.className = 'history-item';
+                newHistoryItem.innerHTML = `
+                    <div class="history-header">
+                        <span class="history-date">${formattedDate}</span>
+                        <span class="history-type">${visitType}</span>
+                    </div>
+                    <div class="history-details">
+                        <div class="history-diagnosis">Diagnosis: ${diagnosis}</div>
+                        ${treatment ? `<div class="history-treatment">Treatment: ${treatment}</div>` : ''}
+                        ${notes ? `<div class="history-notes">${notes}</div>` : ''}
+                    </div>
+                `;
+                
+                // Insert new item at the top
+                historySection.insertBefore(newHistoryItem, historySection.children[2]);
+                
+                // In a real app, you would send this data to your backend
+                /*
+                fetch('/api/medical-history', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        visitDate,
+                        visitType,
+                        diagnosis,
+                        treatment,
+                        notes
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle success
+                    closeModal();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Show error to user
+                });
+                */
+                
+                // For now, just close the modal
+                closeModal();
+            });
+            
+            // Example: Fetch medical history from backend
+            /*
+            fetch('/api/medical-history')
+                .then(response => response.json())
+                .then(data => {
+                    const historySection = document.querySelector('.medical-history');
+                    // Clear existing items except the title and button
+                    while (historySection.children.length > 2) {
+                        historySection.removeChild(historySection.lastChild);
+                    }
+                    
+                    // Add each history item
+                    data.forEach(item => {
+                        const historyItem = document.createElement('div');
+                        historyItem.className = 'history-item';
+                        historyItem.innerHTML = `
+                            <div class="history-header">
+                                <span class="history-date">${item.formattedDate}</span>
+                                <span class="history-type">${item.visitType}</span>
+                            </div>
+                            <div class="history-details">
+                                <div class="history-diagnosis">Diagnosis: ${item.diagnosis}</div>
+                                ${item.treatment ? `<div class="history-treatment">Treatment: ${item.treatment}</div>` : ''}
+                                ${item.notes ? `<div class="history-notes">${item.notes}</div>` : ''}
+                            </div>
+                        `;
+                        historySection.insertBefore(historyItem, historySection.children[2]);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching medical history:', error);
+                });
+            */
+        });
+    </script>
+</body>
+</html>
