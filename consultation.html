@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Consultations | HealthCare Plus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="consultation.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>ByteMed</h1>
+            </div>
+            <nav>
+                <ul>
+                    
+                    <li><a href="consultations.html" class="active">Consultations</a></li>
+                    
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main>
+        <section class="consultation-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Expert Medical Consultations</h1>
+                    <p>Connect with board-certified doctors from the comfort of your home</p>
+                    <a href="#book-now" class="btn btn-primary">Book an Appointment</a>
+                </div>
+                <div class="hero-image">
+                    <img src="images/consultation-hero.jpg" alt="Doctor consultation">
+                </div>
+            </div>
+        </section>
+
+        <section class="consultation-types">
+            <div class="container">
+                <h2>Our Consultation Options</h2>
+                <div class="options-grid">
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Video Consultation</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Face-to-face with doctors</li>
+                            <li><i class="fas fa-check"></i> Secure and private</li>
+                            <li><i class="fas fa-check"></i> Prescriptions sent digitally</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Phone Consultation</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Speak directly with a doctor</li>
+                            <li><i class="fas fa-check"></i> No internet required</li>
+                            <li><i class="fas fa-check"></i> Quick medical advice</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-comment-medical"></i>
+                        </div>
+                        <h3>Chat Consultation</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Text with doctors 24/7</li>
+                            <li><i class="fas fa-check"></i> Good for follow-ups</li>
+                            <li><i class="fas fa-check"></i> Attach photos if needed</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="specialties-section">
+            <div class="container">
+                <h2>Consult With Specialists</h2>
+                <div class="specialties-grid">
+                    <div class="specialty-card">
+                        <img src="images/cardiology.jpg" alt="Cardiology">
+                        <h3>Cardiology</h3>
+                        <p>Heart health and cardiovascular care</p>
+                        <a href="#" class="btn btn-primary">Find Cardiologist</a>
+                    </div>
+                    <div class="specialty-card">
+                        <img src="images/pediatrics.jpg" alt="Pediatrics">
+                        <h3>Pediatrics</h3>
+                        <p>Child healthcare specialists</p>
+                        <a href="#" class="btn btn-primary">Find Pediatrician</a>
+                    </div>
+                    <div class="specialty-card">
+                        <img src="images/dermatology.jpg" alt="Dermatology">
+                        <h3>Dermatology</h3>
+                        <p>Skin, hair and nail conditions</p>
+                        <a href="#" class="btn btn-primary">Find Dermatologist</a>
+                    </div>
+                    <div class="specialty-card">
+                        <img src="images/mental-health.jpg" alt="Mental Health">
+                        <h3>Mental Health</h3>
+                        <p>Psychiatry and counseling</p>
+                        <a href="#" class="btn btn-primary">Find Specialist</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="book-now" class="booking-section">
+            <div class="container">
+                <div class="booking-container">
+                    <div class="booking-form">
+                        <h2>Book Your Consultation</h2>
+                        <form>
+                            <div class="form-group">
+                                <label for="consultation-type">Consultation Type</label>
+                                <select id="consultation-type" required>
+                                    <option value="">Select type</option>
+                                    <option value="video">Video Consultation</option>
+                                    <option value="phone">Phone Consultation</option>
+                                    <option value="chat">Chat Consultation</option>
+                                    <option value="in-person">In-Person Visit</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="specialty">Specialty</label>
+                                <select id="specialty" required>
+                                    <option value="">Select specialty</option>
+                                    <option value="cardiology">Cardiology</option>
+                                    <option value="pediatrics">Pediatrics</option>
+                                    <option value="dermatology">Dermatology</option>
+                                    <option value="mental-health">Mental Health</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="date">Preferred Date</label>
+                                <input type="date" id="date" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="time">Preferred Time</label>
+                                <input type="time" id="time" required>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Find Available Doctors</button>
+                        </form>
+                    </div>
+                    <div class="booking-info">
+                        <h3>Why Choose Us?</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Board-certified doctors</li>
+                            <li><i class="fas fa-check-circle"></i> Average wait time <15 mins</li>
+                            <li><i class="fas fa-check-circle"></i> HIPAA compliant platform</li>
+                            <li><i class="fas fa-check-circle"></i> Prescriptions delivered digitally</li>
+                            <li><i class="fas fa-check-circle"></i> Affordable pricing options</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2>What Our Patients Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The video consultation was so convenient and the doctor was very thorough. I didn't have to leave my home to get expert medical advice."</p>
+                        <div class="patient">
+                            <img src="images/patient1.jpg" alt="Sarah J.">
+                            <div>
+                                <h4>Sarah J.</h4>
+                                <p>Cardiology Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"As a busy parent, being able to consult with a pediatrician without dragging my sick child to the clinic was a lifesaver!"</p>
+                        <div class="patient">
+                            <img src="images/patient2.jpg" alt="Michael T.">
+                            <div>
+                                <h4>Michael T.</h4>
+                                <p>Parent of Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Consult With a Doctor?</h2>
+                <p>Join thousands of patients who have experienced convenient, quality healthcare</p>
+                <a href="appoinment.html" class="btn btn-primary">Book a Consultation Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                
+                
+                       
+                
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 . All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
